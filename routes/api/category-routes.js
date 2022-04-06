@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
           include: [{ model: Product, through:ProductTag, as: 'product_id' }],
         });
     
-        if (!locationData) {
+        if (!categoryData) {
           res.status(404).json({ message: 'No category with that id!' });
           return;
         }
@@ -51,7 +51,12 @@ router.post('/', async (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
+  Category.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
   // update a category by its `id` value
 });
 
