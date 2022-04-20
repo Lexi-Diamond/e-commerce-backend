@@ -56,7 +56,9 @@ router.put('/:id', async (req, res) => {
       id: req.params.id,
     },
   })
-  .then((updatedProductTags) => res.json(updatedProductTags))
+  .then((updatedProductTag) => 
+  {console.log(updatedProductTag); 
+    res.json(updatedProductTag)})
   .catch((err) => {
     // console.log(err);
     res.status(400).json(err);
